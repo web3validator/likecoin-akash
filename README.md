@@ -119,10 +119,9 @@ deployment:
       count: 1
 
 EOF
-
+```
 ![image](https://user-images.githubusercontent.com/59205554/135988855-da33aa90-d274-4ed0-bcf5-de8c4f7ef515.png)
 
-```
 Attention! Address "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63" leave unchanged - this is the escrow account address.
 The cpu, memory and size parameters in this configuration are set close to the minimum, in real use it is necessary
 increase them
