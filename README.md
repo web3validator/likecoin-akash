@@ -16,6 +16,8 @@ Install akash (Linux)
 curl https://raw.githubusercontent.com/ovrclk/akash/master/godownloader.sh | sh -s -- "v$AKASH_VERSION"
 cp ./bin/akash /usr/local/bin/
 ```
+![image](https://user-images.githubusercontent.com/59205554/135986794-63b597c8-3eac-41fe-a864-cb4a72ef5a52.png)
+
 
 Create wallet
 ```
@@ -31,8 +33,10 @@ pubkeys: []
 **Important** write this mnemonic phrase in a safe place.
 It is the only way to recover your account if you ever forget your password.
 
-wood system walnut transfer square soon into very spatial note grief cliff dismiss ability sun exist twin tower marine crazy design gate lift bulk
+wood ball walnut transfer tower soon into very spatial note grief cliff dismiss ability sun exist twin tower marine crazy design gate lift bulk
 ```
+![image](https://user-images.githubusercontent.com/59205554/135986906-d855c6f3-73ac-4a21-a3fa-8839ddb289f0.png)
+
 Save the mnemonic phrase, without it, wallet recovery will be impossible.
 
 Register variables with the name and address of the wallet
@@ -46,10 +50,16 @@ Check the balance
 ```
 akash --node "$AKASH_NODE" query bank balances "$AKASH_ACCOUNT_ADDRESS"
 ```
+![image](https://user-images.githubusercontent.com/59205554/135988194-aff8cad0-5888-47e9-97f0-53e80a235f59.png)
+
+You need at lease 5.1 akt on balance, it is 5 100 000 uakt
+
 Create certificate 
 ```
-akash tx cert create client --from=$AKASH_KEY_NAME --chain-id $AKASH_CHAIN_ID --node $AKASH_NODE --fees 200uakt -y
+akash tx cert create client --from=$AKASH_KEY_NAME --chain-id $AKASH_CHAIN_ID --node $AKASH_NODE --fees 5000uakt -y
 ```
+![image](https://user-images.githubusercontent.com/59205554/135988299-1df8cb8a-5f6c-48fd-afdb-15a79594bb5b.png)
+
 At this point, the installation of akash is complete.
 
 Expand our configuration with an image liked
