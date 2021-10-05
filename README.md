@@ -119,6 +119,9 @@ deployment:
       count: 1
 
 EOF
+
+![image](https://user-images.githubusercontent.com/59205554/135988855-da33aa90-d274-4ed0-bcf5-de8c4f7ef515.png)
+
 ```
 Attention! Address "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63" leave unchanged - this is the escrow account address.
 The cpu, memory and size parameters in this configuration are set close to the minimum, in real use it is necessary
@@ -126,20 +129,29 @@ increase them
 
 Expanding our configuration
 ```
-akash tx deployment create deploy.yml --from $AKASH_KEY_NAME --node $AKASH_NODE --chain-id $AKASH_CHAIN_ID --fees 200uakt -b sync -y
+akash tx deployment create deploy.yml --from $AKASH_KEY_NAME --node $AKASH_NODE --chain-id $AKASH_CHAIN_ID --fees 5000uakt -b sync -y
+```
+![image](https://user-images.githubusercontent.com/59205554/135989247-23290bf6-a9b5-4f44-b321-afbd2423dcca.png)
+{"height":"0","txhash":"3A8132E7781E45DF6A54CFA92F8551A595113016C0739E9A9628073F123E0EAB","codespace":"","code":0,"data":"","raw_log":"[]","logs":[],"info":"","gas_wanted":"0","gas_used":"0","tx":null,"timestamp":""}
 
-{"height":"0","txhash":"05CBBC9ACBD1F51AF5B0D254E2BFD56B1ACA42819E5BABEEC5086947625E45D4","codespace":"","code":0,"data":"","raw_log":"[]","logs":[],"info":"","gas_wanted":"0","gas_used":"0","tx":
-null,"timestamp":""}
+![image](https://user-images.githubusercontent.com/59205554/135989756-ce2ca9b1-3d89-49ae-ad3e-b2ba86b87475.png)
+
+You can check your txid through the explorer https://www.mintscan.io/akash/txs/3A8132E7781E45DF6A54CFA92F8551A595113016C0739E9A9628073F123E0EAB
+
+![image](https://user-images.githubusercontent.com/59205554/135991507-8d3e91fe-f2a7-4e95-8984-ade4e5995df2.png)
+
+Check status of your installation through the cli and find dseq value
+
 ```
-check the status of your installation
+akash q tx 3A8132E7781E45DF6A54CFA92F8551A595113016C0739E9A9628073F123E0EAB --node=$AKASH_NODE
+"3A8132E7781E45DF6A54CFA92F8551A595113016C0739E9A9628073F123E0EAB" get from the output of the previous command
 ```
-akash q tx 05CBBC9ACBD1F51AF5B0D254E2BFD56B1ACA42819E5BABEEC5086947625E45D4 --node=$AKASH_NODE
-"05CBBC9ACBD1F51AF5B0D254E2BFD56B1ACA42819E5BABEEC5086947625E45D4" получаем из вывода предыдущей команды
-```
+![image](https://user-images.githubusercontent.com/59205554/135989915-04faa2ff-677f-419b-ba02-463a42345dcd.png)
 in the output of this command, we are interested in the dseq value
-Defining variables
+
+Put it in the variables
 ```
-export AKASH_DSEQ=2252882
+export AKASH_DSEQ=2932948
 export AKASH_GSEQ=1
 export AKASH_OSEQ=1
 ```
@@ -147,11 +159,13 @@ check the deployment status
 ```
 akash query deployment get --owner $AKASH_ACCOUNT_ADDRESS --node $AKASH_NODE --dseq $AKASH_DSEQ
 ```
-и определяем ставки которые можно использовать для нашей конфигурации
+And determine the rates that can be used for our configuration
+![image](https://user-images.githubusercontent.com/59205554/135990246-a64a5013-442f-4c3d-aec3-b59fb13df795.png)
+
 ```
 akash query market bid list --owner=$AKASH_ACCOUNT_ADDRESS --node $AKASH_NODE --dseq $AKASH_DSEQ
 ```
-в списке возвращаемом командой выбираем провайдера
+в списке возвращаемой командой выбираем провайдера
 и присваиваем переменной его адрес
 ```
 export AKASH_PROVIDER=akash14c4ng96vdle6tae8r4hc2w4ujwrshdddtuudk0
