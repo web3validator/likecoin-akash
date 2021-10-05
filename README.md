@@ -35,7 +35,7 @@ It is the only way to recover your account if you ever forget your password.
 
 wood ball walnut transfer tower soon into very spatial note grief cliff dismiss ability sun exist twin tower marine crazy design gate lift bulk
 ```
-![image](https://user-images.githubusercontent.com/59205554/135986906-d855c6f3-73ac-4a21-a3fa-8839ddb289f0.png)
+![image](https://user-images.githubusercontent.com/59205554/135988422-37db10f4-5d31-49be-9984-5aa25f365c51.png)
 
 Save the mnemonic phrase, without it, wallet recovery will be impossible.
 
