@@ -197,39 +197,39 @@ akash provider lease-status --node $AKASH_NODE --dseq $AKASH_DSEQ --from $AKASH_
 "name": "liked"
 },
 ```
-нас интересует host и externalPort.
-В этом примере мы подключаемся к нашей ноде:
+we are interested in host and externalPort.
+In this example, we are connecting to our node:
 ```
 ssh root@cluster.provider-0.prod.ams1.akash.pub -p 31549
 ```
-пароль задается при создании образа, после первого входа его необходимо сменить
-Также можно просмотреть логи нашей ноды:
+the password is set when creating the image, after the first login it must be changed
+You can also view the logs of our node:
 ```
 akash provider lease-logs --node "$AKASH_NODE" --dseq "$AKASH_DSEQ" --gseq "$AKASH_GSEQ" --oseq "$AKASH_OSEQ" --provider "$AKASH_PROVIDER" --from "$AKASH_KEY_NAME"
 ```
 
-*Производим настройку валидатора*
+* We configure the validator *
 
-Создаем ключи
+Create keys
 ```
 liked init validator --chain-id likecoin-public-testnet-3
 liked keys add validator
 ```
-запоминаем полученную мнемоническую фразу   
+remember the received mnemonic phrase
 
-Получаем genesis.json файл для нашей сети
+We get genesis.json file for our network
 ```
 curl https://gist.githubusercontent.com/nnkken/4a161c14e9dc03f412c36d11cdf7ea27/raw/9265c348c9f79b918d99aeee7f6c29b6b3bc449f/genesis.json -o /root/.liked/config/genesis.json
 ```
-Прописываем seed в конфигурационном файле
+We register the seed in the configuration file
 ```
 sed -ie 's/seeds = ""/seeds = "c5e678f14219c1f161cb608aaeda37933d71695d@nnkken.dev:31801"/g' /root/.liked/config/config.toml
 ```
-рестартуем ноду для применения изменений
+restart the node to apply the changes
 ```
 reboot
 ```
-подключаемся и создаем валидатора
+connect and create a validator
 ```
 ssh root@cluster.provider-0.prod.ams1.akash.pub -p 31549
 ```
